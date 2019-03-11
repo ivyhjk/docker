@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-alpine
+FROM ivyhjk/php5.6-fpm-mysql-git
 
 RUN apk update
 
@@ -8,5 +8,4 @@ RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/4.
     && mkdir -p /usr/src/php/ext \
     && mv phpredis-* /usr/src/php/ext/redis
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql redis
-RUN apk add --no-cache git
+RUN docker-php-ext-install redis
